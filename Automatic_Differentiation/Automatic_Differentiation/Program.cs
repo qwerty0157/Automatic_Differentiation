@@ -10,15 +10,23 @@ namespace Automatic_Differentiation
             // y = a exp(x) * (exp(x) + b)
             // x = 1, a = 2, b = 3 -> y = 31.0878, dy/dx = 45.8659
 
-            AutoDiff.AutoDiff x = 1;
+            // y = a * b * sin(x) * cos(x), x = pi / 4 
+            // y' = a * b * 2 * cos(2x)
+            // y = 3.0, y' = 0.0
+            //AutoDiff.AutoDiff x = 1;
+
+            AutoDiff.AutoDiff x = Math.PI / 4;
             var a = 2;
             var b = 3;
 
             // y = (a * exp(x)) * (exp(x) + b)
-            var c = AutoDiff.AutoDiffMath.Exp(x);
-            var d = a * c;
-            var e = c + b;
-            var y = d * e;
+            //var c = AutoDiff.AutoDiffMath.Exp(x);
+            //var d = a * c;
+            //var e = c + b;
+            //var y = d * e;
+            var c = AutoDiff.AutoDiffMath.Sin(x);
+            var d = AutoDiff.AutoDiffMath.Cos(x);
+            var y = a * b * c * d;
             y.GetDifferential();
 
             // yとdy/dxを出力
